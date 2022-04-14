@@ -4,7 +4,7 @@
 \alias{paneledOutlierExplorer}
 \title{Paneled Outlier Explorer}
 \usage{
-paneledOutlierExplorer(message, width = NULL, height = NULL, elementId = NULL)
+paneledOutlierExplorer(data, width = NULL, height = NULL, elementId = NULL)
 }
 \description{
 Paneled Outlier Explorer

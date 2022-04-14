@@ -3,12 +3,13 @@
 #' @import htmlwidgets
 #'
 #' @export
+#' @example paneledOutlierExplorer(adbds)
 paneledOutlierExplorer <- function(data, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    data = data,
-    settings = list()
+    data = data
+    #, settings = list()
   )
 
   # create widget
