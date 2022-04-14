@@ -1,0 +1,32 @@
+---
+title: "paneledOutlierExplorer"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{paneledOutlierExplorer}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(paneledOutlierExplorer)
+```
+
+Columns 
+
+```{r, echo=FALSE}
+shiny::tags$ul(
+  purrr::map(colnames(adbds), ~shiny::tags$li(.x))
+)
+```
+
+```{r}
+paneledOutlierExplorer(adbds)
+```
+

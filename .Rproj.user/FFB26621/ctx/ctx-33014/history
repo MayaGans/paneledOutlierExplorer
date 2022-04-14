@@ -1,0 +1,10 @@
+htmlwidgets::scaffoldWidget("aeexplorer")
+usethis::use_data(adbds, adbds)
+adbds <- read.csv("adbds.csv")
+usethis::use_data(adbds, adbds)
+devtools::load_all()
+adbds
+paneledOutlierExplorer(adbds)
+usethis::use_vignette("paneledOutlierExplorer")
+library(paneledOutlierExplorer)
+paneledOutlierExplorer(adbds)
