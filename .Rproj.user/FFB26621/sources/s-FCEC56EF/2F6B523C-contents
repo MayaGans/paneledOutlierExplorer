@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(paneledOutlierExplorer)
 ```
 
-Columns 
+Columns... this can eventually be used in the settings object but saving that for later...
 
 ```{r, echo=FALSE}
 shiny::tags$ul(
@@ -27,6 +27,7 @@ shiny::tags$ul(
 ```
 
 ```{r}
-paneledOutlierExplorer(adbds)
+init_paneledOutlierExplorer(adbds) %>%
+  paneledOutlierExplorer()
 ```
 
