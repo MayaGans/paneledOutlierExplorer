@@ -4,18 +4,49 @@
 #'
 #' @export
 #' @example paneledOutlierExplorer(adbds)
-paneledOutlierExplorer <- function(data, width = NULL, height = NULL, elementId = NULL) {
+paneledOutlierExplorer <- function(data, mapping = NULL, width = NULL, height = NULL, elementId = NULL, ...) {
 
-  # forward options using x
-  x = list(
-    data = data
-    #, settings = list()
-  )
+  if(is.null(mapping)){
+    mapping <- list(
+      measure_col = 'PARAM',
+      time_cols = list(
+        list(
+          value_col = "VISIT",
+          order_col = "VISITNUM",
+          label = "VISIT",
+          type = 'ordinal',
+          label="Visit",
+          rotate_tick_labels = TRUE,
+          vertical_space = 75
+        ),
+        list(
+          value_col = "ADY",
+          order_col = "ADY",
+          label = "Study Day",
+          type = 'linear',
+          label="Visit",
+          rotate_tick_labels = FALSE,
+          vertical_space = 0
+        )
+      ),
+      value_col = 'AVAL',
+      id_col = 'USUBJID',
+      lln_col = 'A1LO',
+      uln_col = 'A1HI'
+    )
+  }
+
+  # add ... to mapping
+  if(length(list(...))>0){
+    mapping <-  purrr::list_modify(mapping, !!!list(...))
+  }
 
   # create widget
   htmlwidgets::createWidget(
     name = 'paneledOutlierExplorer',
-    x,
+    x = list(
+      data = data,
+      settings = mapping),
     width = width,
     height = height,
     package = 'paneledOutlierExplorer',
